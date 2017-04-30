@@ -26,7 +26,7 @@ router.post("/", (req, res) => {
   });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/", (req, res) => {
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
