@@ -27,9 +27,9 @@ function objToSql(ob) {
 
 // Object for all our SQL statement functions.
 var orm = {
-  selectAll: function(tableInput, callback) {
+  selectAll: (tableInput, callback) => {
     var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
+    connection.query(queryString, (err, result) => {
       if (err) {
         throw err;
       }
@@ -37,7 +37,7 @@ var orm = {
     });
   },
 
-  insertOne: function(table, cols, vals, callback) {
+  insertOne: (table, cols, vals, callback) => {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -49,7 +49,7 @@ var orm = {
 
     console.log(queryString);
 
-    connection.query(queryString, vals, function(err, result) {
+    connection.query(queryString, vals, (err, result) => {
       if (err) {
         throw err;
       }
@@ -58,7 +58,7 @@ var orm = {
     });
   },
 
-  updateOne: function(table, objColVals, condition, callback) {
+  updateOne: (table, objColVals, condition, callback) => {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
@@ -67,7 +67,7 @@ var orm = {
     queryString += condition;
 
     console.log(queryString);
-    connection.query(queryString, function(err, result) {
+    connection.query(queryString, (err, result) => {
       if (err) {
         throw err;
       }
