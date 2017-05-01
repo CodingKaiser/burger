@@ -18,21 +18,21 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   burger.create([
-    "name", "sleepy"
+    "burger_name", "devoured", "date"
   ], [
-    req.body.name, req.body.sleepy
+    req.body.burger, req.body.devoured, ((new Date()) + "").split("(").slice(0, 1)[0].trim()
   ], () => {
     res.redirect("/");
   });
 });
 
-router.put("/", (req, res) => {
+router.put("/:id", (req, res) => {
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 
   burger.update({
-    sleepy: req.body.sleepy
+    devoured: req.body.devoured
   }, condition, () => {
     res.redirect("/");
   });

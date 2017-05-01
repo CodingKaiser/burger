@@ -5,6 +5,6 @@ CREATE TABLE burgers (
   id int NOT NULL AUTO_INCREMENT,
   burger_name varchar(255) NOT NULL,
   devoured boolean default false,
-  date varchar(20),
+  date varchar(33),
   PRIMARY KEY (id)
 );

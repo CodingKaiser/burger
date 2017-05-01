@@ -11,4 +11,32 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div id="fresh" class="col-md-6">
+      {{#each burgers}}
+        {{#unless this.devoured}}
+          {{this.burger_name}}
+
+          <form action="/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="true">
+            <button type="submit">DEVOUR!</button>
+          </form>
+        {{/unless}}
+      {{/each}}
+    </div>
+    <div id="consumed" class="col-md-6">
+      {{#each burgers}}
+        {{#if this.devoured}}
+          <p class="bg-info">{{this.id}}. {{this.burger_name}}</p>
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+  <div class="row">
+    <form action="/?_method=POST" method="POST">
+    	<textarea type="text" class="center-block" name="burger" placeholder="burger"></textarea>
+      <input type="hidden" name="devoured" value="0">
+    	<button class="center-block" type="submit">Make Burger!</button>
+    </form>
+  </div>
 </div>
